@@ -1,0 +1,6 @@
+{
+    "name": "econest",
+    "country": "CN",
+    "render_readme": true,
+    "domains": ["sensor"]
+}
