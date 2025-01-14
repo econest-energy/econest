@@ -5,10 +5,11 @@ from homeassistant.core import HomeAssistant
 from homeassistant.const import Platform
 
 from . import econest_intelligent
+from .const import DOMAIN
 
 PLATFORMS = [Platform.SENSOR]
 
-type EconestConfigEntry = ConfigEntry[cyberiot_intelligent.CyberiotApollo]
+type EconestConfigEntry = ConfigEntry[econest_intelligent.EconestEnergy]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: EconestConfigEntry) -> bool:
@@ -18,6 +19,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: EconestConfigEntry) -> b
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    sensor_manager = hass.data[DOMAIN].pop(entry.entry_id, None)
+    if sensor_manager:
+        sensor_manager.stop()
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
-
     return unload_ok

@@ -139,10 +139,8 @@ class EconestFlowHandler(ConfigFlow, domain=DOMAIN):
                     vol.Required("confirm", default=True): bool,
                 })
             )
-        # 如果用户取消确认
         if not user_input.get("confirm"):
             return self.async_abort(reason="user declined")
-        # 验证输入并创建配置条目
         try:
             user_input = self.discovered_conf
             return await self.async_validate_input_create_entry(user_input)
