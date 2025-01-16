@@ -32,6 +32,10 @@ Setting up a custom repository is done by:
 ![integration06.png](images/integration06.png)
 
 7. After downloading is complete, Restart the HomeAssistant platform.
+
+![integration11.png](images/integration11.png)
+![integration12.png](images/integration12.png)
+
 8. After the restart is completed, Click on Settings, Select devices and services.
 
 ![integration07.png](images/integration07.png)
